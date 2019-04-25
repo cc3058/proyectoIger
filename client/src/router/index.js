@@ -5,6 +5,11 @@ import Page2 from '@/components/Register'
 import Student from '@/components/Estudiante'
 import Admin from '@/components/Admin'
 import Teacher from '@/components/Encargado'
+import Circulo from '@/components/CrearCirculo'
+import AdminHome from '@/components/AdminHome'
+import Datos from '@/components/DatosEstudiante'
+import StudentHome from '@/components/EstudHome'
+import TeachHome from '@/components/TeachHome'
 
 Vue.use(Router)
 
@@ -29,17 +34,49 @@ export default new Router({
         {
           path: '/student',
           name: 'HomePage',
-          component: Student
+          component: Student,
+          children: [
+            {
+              path: '',
+              name: 'StudentHome',
+              component: StudentHome
+            },
+            {
+              path: 'cuenta',
+              name: 'VerDatos',
+              component: Datos
+            }
+
+          ]
         },
         {
           path: '/admin',
           name: 'HomePage2',
-          component: Admin
+          component: Admin,
+          children: [
+            {
+              path: 'nuevocirculo',
+              name: 'Circle',
+              component: Circulo
+            },
+            {
+              path: '',
+              name: 'AdminHome',
+              component: AdminHome
+            }
+          ]
         },
         {
           path: '/teacher',
           name: 'HomePage3',
-          component: Teacher
+          component: Teacher,
+          children: [
+            {
+              path: '',
+              name: 'TeachHome',
+              component: TeachHome
+            }
+          ]
         }
     ]
 })

@@ -1,7 +1,6 @@
 <template>
     <div class="hello">
     <h1>{{ msg }}</h1>
-    <router-view/>
     </div>
 </template>
 
@@ -11,7 +10,7 @@
         name: 'UserType',
         data () {
             return {
-                msg: 'Vista Encargado/Maestro'
+                msg: 'Este es mi homepage admin'
             }
         }
     }
