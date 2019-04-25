@@ -7,7 +7,7 @@ const logger = require('morgan')
 // MongoDB Driver
 const mongoose = require('mongoose')
 
-const port = 3000
+const port = 8080
 const DB_URI = "mongodb://localhost:27017/igerDB" // mongodb://domain:port/database-name
 
 // Connect to MongoDB
