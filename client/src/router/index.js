@@ -10,6 +10,8 @@ import AdminHome from '@/components/AdminHome'
 import Datos from '@/components/DatosEstudiante'
 import StudentHome from '@/components/EstudHome'
 import TeachHome from '@/components/TeachHome'
+import AgregarACirculo from '@/components/AgregarACirculo'
+import Planificacion from '@/components/Planificacion'
 
 Vue.use(Router)
 
@@ -63,6 +65,11 @@ export default new Router({
               path: '',
               name: 'AdminHome',
               component: AdminHome
+            },
+            {
+              path: 'agregar',
+              name: 'Agregar',
+              component: AgregarACirculo
             }
           ]
         },
@@ -75,6 +82,11 @@ export default new Router({
               path: '',
               name: 'TeachHome',
               component: TeachHome
+            },
+            {
+              path: 'plan',
+              name: 'Planificacion',
+              component: Planificacion
             }
           ]
         }

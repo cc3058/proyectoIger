@@ -1,16 +1,34 @@
 <template>
     <div class="hello">
     <h1>{{ msg }}</h1>
+    <v-btn depressed dark class="orange font-weight-bold" v-on:click="nuevocirculo()">Crear círculo</v-btn>
+    <br>
+    <v-btn depressed dark class="orange font-weight-bold" v-on:click="asignar()">Asignar miembros a círculo</v-btn>
+    <br>
+    <v-btn depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
     </div>
 </template>
 
 
 <script>
+import router from '../router'
+
     export default {
         name: 'UserType',
         data () {
             return {
-                msg: 'Este es mi homepage admin'
+                msg: 'Inicio'
+            }
+        },
+        methods: {
+        nuevocirculo() {
+          router.push({name: 'Circle'});
+          },
+        asignar(){
+          router.push({name: 'Agregar'})
+          },
+          salir(){
+            router.push({name: 'LogIn'})
             }
         }
     }

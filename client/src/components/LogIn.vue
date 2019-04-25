@@ -9,7 +9,7 @@
           <br>
           <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
           <br>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()" v-model="type" >Iniciar sesión</v-btn>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()" >Iniciar sesión</v-btn>
           </div>
         </v-flex>
         <br>

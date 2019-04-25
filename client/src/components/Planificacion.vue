@@ -5,11 +5,15 @@
     <v-container fluid grid-list-xl>
       <v-layout wrap align-center>
         <div class="inner">
-          <v-select class="drop-down-conf" v-model="sector" label="Sector" :items="sectores" ></v-select>
-          <v-select class="drop-down-conf" v-model="region" label="Región" :items="sectores" ></v-select>
+          <v-date-picker v-model="fecha" label="Fecha" :reactive="reactive" ></v-date-picker>
+          <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo a quien irá dirigida la información" :items="circles" ></v-select>
           <v-text-field label = "Dirección" v-model="name"></v-text-field>
-          <v-text-field label = "Código" v-model="number"></v-text-field>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
+          <v-textarea
+          name="input-7-1"
+          label="Información"
+          hint="Planificación"
+        ></v-textarea>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Enviar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
         </div>
       </v-layout>
     </v-container>
@@ -24,7 +28,7 @@ import router from '../router'
         name: 'UserType',
         data () {
             return {
-                msg: 'Crear Circulo',
+                msg: 'Enviar planificación',
                 name: '',
                 sector: '',
                 region: '',
