@@ -53,7 +53,7 @@
                 } catch (error) {
                     this.error = error.response.data.error
                 }*/
-                router.push({name: "HomePage"});
+                router.push({name: "StudentHome"});
                 //estos son los datos pero idk como mandarlos a express
                 //this.email;
                 //this.password;

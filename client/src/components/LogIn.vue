@@ -31,7 +31,7 @@ import router from '../router'
         },
         methods: {
         ingreso() {
-          router.push({name: "HomePage"});
+          router.push({name: "StudentHome"});
           //estas son las variables que hay que pasar
           //this.email;
           //this.password;
