@@ -2,10 +2,12 @@
     <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Información de ubicación</h2>
-    <v-container fluid grid-list-xl>
-      <v-layout wrap align-center>
+    <v-container fluid grid-list-md>
+      <v-layout row wrap align-center>
         <div class="inner">
+        <v-flex xs6>
           <v-date-picker v-model="fecha" label="Fecha" :reactive="reactive" ></v-date-picker>
+        </v-flex>
           <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo a quien irá dirigida la información" :items="circles" ></v-select>
           <v-text-field label = "Dirección" v-model="name"></v-text-field>
           <v-textarea
@@ -13,6 +15,7 @@
           label="Información"
           hint="Planificación"
         ></v-textarea>
+        
           <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Enviar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
         </div>
       </v-layout>
