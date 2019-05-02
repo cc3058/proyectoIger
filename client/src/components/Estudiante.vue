@@ -11,7 +11,7 @@
         name: 'UserType',
         data () {
             return {
-                msg: 'Home Page Estudiante'
+                msg: 'Vista Estudiante'
             }
         }
     }

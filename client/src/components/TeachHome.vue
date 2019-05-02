@@ -1,17 +1,29 @@
 <template>
     <div class="hello">
     <h1>{{ msg }}</h1>
-    <router-view/>
+    <v-btn depressed dark class="orange font-weight-bold" v-on:click="plan()">Enviar planificación y horario</v-btn>
+    <br>
+    <v-btn depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
     </div>
 </template>
 
 
 <script>
+import router from '../router'
+
     export default {
         name: 'UserType',
         data () {
             return {
-                msg: 'Vista Encargado/Maestro'
+                msg: 'Inicio'
+            }
+        },
+        methods: {
+        plan(){
+          router.push({name: 'Planificacion'})
+          },
+          salir(){
+            router.push({name: 'LogIn'})
             }
         }
     }

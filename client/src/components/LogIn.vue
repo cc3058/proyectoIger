@@ -9,7 +9,7 @@
           <br>
           <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
           <br>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()" v-model="type" >Iniciar sesión</v-btn>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()" >Iniciar sesión</v-btn>
           </div>
         </v-flex>
         <br>
@@ -31,7 +31,7 @@ import router from '../router'
         },
         methods: {
         ingreso() {
-          router.push({name: "HomePage"});
+          router.push({name: "StudentHome"});
           //estas son las variables que hay que pasar
           //this.email;
           //this.password;
