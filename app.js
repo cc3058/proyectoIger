@@ -1,11 +1,11 @@
-const express = require('express')
-const app = express()
-const path = require('path')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const logger = require('morgan')
+const express = require('express');
+const app = express();
+const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
 // MongoDB Driver
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const port = 3000
 const DB_URI = "mongodb://localhost:27017/igerDB" // mongodb://domain:port/database-name
@@ -30,9 +30,9 @@ process.on('SIGINT', function() {
     })
 })
 
-var users = require('./routes/api-posts')
-app.use('/users', users)
-app.use('/circulos', postRoute)
+var users = require('./routes/api-posts');
+app.use('/users', users);
+app.use('/circulos', postRoute);
 
 
 
