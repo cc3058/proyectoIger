@@ -9,81 +9,70 @@ const User = require('../models/user')
 // PUT  - update data in the server
 // DELETE - delete data in the server
 
-router.get('/', function(req, res, next) {
-    let offset = Number(req.query.offset);
-    let limit  = Number(req.query.limit);
-    if (limit == 0) {
-        limit = Number.MAX_SAFE_INTEGER;
+process.env.SECRET_KEY = 'secret'
+
+users.post("/register", (req, res) => {
+    const today = new Date()
+    const userData = {
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: req.body.password,
+        role: req.body.role
     }
-    Post.find({})
-        .skip(offset)
-        .limit(limit)
-        .then((data) => {
-        res.json(data)
+
+    User.findOne({
+        email: req.body.email
     })
+        .then(user => {
+            if (!user) {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    userData.password = hash
+                    User.create(userData)
+                        .then(user => {
+                            res.json({ status: user.email + ' registered' })
+                        })
+                        .catch(err => {
+                            res.send('error: ' + err)
+                        })
+                })
+            } else {
+                res.json({ error: 'User already exists' })
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
-
-router.get('/:postId', function(req, res, next) {
-    let id = req.params.postId
-    Post.findById(id, function(err, data) {
-        if (err || !data) {
-            console.log(err)
-            return;
-        }
-        res.json(data)
+users.post('/login', (req, res) => {
+    User.findOne({
+        email: req.body.email
     })
+        .then(user => {
+            if (user) {
+                if (bcrypt.compareSync(req.body.password, user.password)) {
+                    const payload = {
+                        _id: user._id,
+                        first_name: user.first_name,
+                        last_name: user.last_name,
+                        email: user.email,
+                        role: user.email
+                    }
+                    let token = jwt.sign(payload, process.env.SECRET_KEY, {
+                        expiresIn: 1440
+                    })
+                    res.send(token)
+                } else {
+                    res.json({ error: 'User does not exist' })
+                }
+            } else {
+                res.json({ error: 'User does not exist' })
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
-
-router.post('/', function(req, res, next) {
-    let post = new Post({
-        title:   req.body.title,
-        content: req.body.content
-    })
-    post.save(function(err, data) {
-        if (err || !data) {
-            console.log("ERROR:", err)
-            res.json({error: err})
-            return;
-        }
-        res.json(data)
-    })
-})
-
-
-router.put('/:postId', function(req, res, next) {
-    
-    let id = req.params.postId
-    Post.findByIdAndUpdate(id, {
-        title:   req.body.title,
-        content: req.body.content
-    }, function(err, data) {
-        if (err || !data) {
-            console.log("ERROR:", err)
-            res.json({error: err})
-            return;
-        }
-        res.json(data)
-    })
-   
-})
-
-
-router.delete('/:postId', function(req, res, next) {
-    // Database Operation: delete an existing post
-    let id = req.params.postId
-    Post.findByIdAndRemove(id, function(err, data) {
-        if (err) {
-            console.log("ERROR:", err)
-            res.json({error: err})
-            return;
-        }
-        res.json({error: false})
-    })
-})
-
-module.exports = router;
-
-
-
+module.exports = users;
