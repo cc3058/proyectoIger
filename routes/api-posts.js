@@ -1,8 +1,11 @@
-const router = require('express').Router()
+const express = require("express")
+const users = express.Router()
+const cors = require("cors")
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 // Models
-const Post = require('../models/post')
 const User = require('../models/user')
-
+users.use(cors())
 
 // GET  - retrieve data from the server
 // POST - send data to the server
@@ -71,6 +74,7 @@ users.post('/login', (req, res) => {
             }
         })
         .catch(err => {
+          console.log('hola')
             res.send('error: ' + err)
         })
 })
