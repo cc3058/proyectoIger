@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //Defining collection and schema for a circle-post
 let Post = new Schema({
-    departamento:{ 
+    departamento:{
         type: String
     },
     municipio:{
@@ -11,6 +11,9 @@ let Post = new Schema({
     },
     circulo:{
         type: String
+    },
+    direccion:{
+      type: String
     },
     coordinador:{
         type: String
@@ -25,6 +28,3 @@ let Post = new Schema({
 });
 
 module.exports = mongoose.model('Post', Post)
-
-
-

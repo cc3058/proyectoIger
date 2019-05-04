@@ -1,8 +1,10 @@
 <template>
+  <v-layout align-center justify-center>
     <div class="hello">
     <h1>{{ msg }}</h1>
     <router-view/>
     </div>
+  </v-layout>
 </template>
 
 
