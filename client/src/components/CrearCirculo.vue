@@ -58,7 +58,6 @@ import Api from '@/services/Api'
                     console.log(error)
                     return null
                 }).then(response => {
-                    console.log(data)
                     router.push({ name: "AdminHome" })
                 })
             },
