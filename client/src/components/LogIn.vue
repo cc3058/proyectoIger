@@ -39,6 +39,13 @@ import router from '../router'
               password: this.password
             })
               console.log(response.data)
+              if (response.data == 'Administrador'){
+                router.push({name: "AdminHome"});
+              } else if (response.data == 'Estudiante'){
+                router.push({name: "StudentHome"});
+              } else if (response.data == 'Encargado de círculo/Maestro'){
+                router.push({name: "TeachHome"});
+              }
           } catch (error){
             //this.error = error.response.data.error
           }
