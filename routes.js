@@ -28,19 +28,20 @@ module.exports = (app) => { app.post('/login',(req, res) => {
                         first_name: user.first_name,
                         last_name: user.last_name,
                         email: user.email,
-                        role: user.email
+                        role: user.role
                     }
                     let token = jwt.sign(payload, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    console.loge('si existe')
+                    console.log(token)
                     res.send(token)
                 } else {
                     res.json({ error: 'User does not exist' })
                     console.log('no existe 1')
                 }
             } else {
-                res.json({ error: 'User does not exist' })
+                //res.json({ error: 'User does not exist' })
+                res.send({ error: 'Error mano'})
                 console.log('no existe 2')
             }
         })

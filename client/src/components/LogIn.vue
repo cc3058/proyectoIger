@@ -34,12 +34,13 @@ import router from '../router'
         async login() {
           //router.push({name: "StudentHome"});
           try {
-            await AuthenticationService.login({
+            const response = await AuthenticationService.login({
               email: this.email,
               password: this.password
             })
+              console.log(response.data)
           } catch (error){
-            this.error = error.response.data.error
+            //this.error = error.response.data.error
           }
           //estas son las variables que hay que pasar
           //this.email;
