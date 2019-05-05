@@ -74,18 +74,9 @@ users.post('/login', (req, res) => {
             }
         })
         .catch(err => {
-<<<<<<< HEAD
-=======
           console.log('hola')
->>>>>>> ff562d419fcb4d11afebeea3377cc3ba3188649d
             res.send('error: ' + err)
         })
 })
 
 module.exports = users;
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> ff562d419fcb4d11afebeea3377cc3ba3188649d
