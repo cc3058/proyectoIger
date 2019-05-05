@@ -13,7 +13,7 @@
           </div>
         </v-flex>
         <br>
-        <p>¿No tienes cuenta? <router-link to="/register">Registrarse</router-link></p>
+        <p>¿No tienes cuenta? <router-link to="/register">Registrarse</router-link></p> 
     </div>
 </template>
 
