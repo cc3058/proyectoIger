@@ -7,8 +7,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     email: { type: String, unique: true, lowercase: true },
     password: String,
-    first_name: {type: String},
-    last_name: {type: String},
+    first_name: {type: String, unique: false},
+    last_name: {type: String, unique: false},
     role: {type: String, default: "member"},
 }, { timestamps: true });
 
@@ -31,4 +31,4 @@ userSchema.methods.isTeacher = function() {
     return (this.role === "teacher");
 };
 
-module.exports = User = mongoose.model('users', userSchema);
+module.exports = mongoose.model('User', userSchema);

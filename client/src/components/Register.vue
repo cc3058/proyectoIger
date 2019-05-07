@@ -8,11 +8,12 @@
             <br>
             <v-text-field label = "Email" v-model="email"></v-text-field>
             <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
-            <v-text-field label = "Nombre" v-model="name"></v-text-field>
+            <v-text-field label = "Nombre" v-model="first_name"></v-text-field>
+            <v-text-field label = "Apellido" v-model="last_name"></v-text-field>
             <br>
-            <v-select class="drop-down-conf" v-model="type" label="Tipo de usuario" :items="items" ></v-select>
+            <v-select class="drop-down-conf" v-model="role" label="Tipo de usuario" :items="items" ></v-select>
             <br>
-            <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()">Registrarme</v-btn>
+            <v-btn depressed dark class="orange font-weight-bold" v-on:click="register()">Registrarme</v-btn>
             <br>
             </div>
           </v-layout>
@@ -33,27 +34,31 @@
                 msg: 'Registrar nueva cuenta',
                 email: '',
                 password: '',
-                type: '',
+                first_name: '',
+                last_name: '',
+                role: '',
                 items:['Administrador','Estudiante','Encargado de círculo/Maestro']
             }
         },
         methods: {
             navigate() {
-
                 router.push({ name: "LogIn" });
             },
-            ingreso() {
-                /*try {
-                AuthenticationService.signup({
-                email: "preuba@gmail.com",
-                password: "12345",
-                name: "juanito",
-                type: "Estudiante"
+            async register() {
+                try {
+                const response = AuthenticationService.register({
+                email: this.email,
+                password: this.password,
+                first_name: this.first_name,
+                last_name: this.last_name,
+                role: this.role
                 })
+                console.log(response.data)
                 } catch (error) {
-                    this.error = error.response.data.error
-                }*/
-                router.push({name: "StudentHome"});
+                    console.log(error.data)
+                }
+
+                //router.push({name: "StudentHome"});
                 //estos son los datos pero idk como mandarlos a express
                 //this.email;
                 //this.password;
