@@ -9,7 +9,7 @@
           <br>
           <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
           <br>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="ingreso()" >Iniciar sesión</v-btn>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="login()" >Iniciar sesión</v-btn>
           </div>
         </v-flex>
         <br>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 import router from '../router'
 
     export default {
@@ -30,8 +31,24 @@ import router from '../router'
             }
         },
         methods: {
-        ingreso() {
-          router.push({name: "StudentHome"});
+        async login() {
+          //router.push({name: "StudentHome"});
+          try {
+            const response = await AuthenticationService.login({
+              email: this.email,
+              password: this.password
+            })
+              console.log(response.data)
+              if (response.data == 'Administrador'){
+                router.push({name: "AdminHome"});
+              } else if (response.data == 'Estudiante'){
+                router.push({name: "StudentHome"});
+              } else if (response.data == 'Encargado de círculo/Maestro'){
+                router.push({name: "TeachHome"});
+              }
+          } catch (error){
+            //this.error = error.response.data.error
+          }
           //estas son las variables que hay que pasar
           //this.email;
           //this.password;
