@@ -22,6 +22,7 @@
 
 <script>
 import router from '../router'
+import Api from '@/services/Api'
 
     export default {
         name: 'UserType',
@@ -39,13 +40,28 @@ import router from '../router'
         },
         methods: {
             creado() {
-                // aca va la info que se manda al backend
+                const post = Api().post
 
-                //se regresa a la pagina principal
-                router.push({ name: "AdminHome" });
+                const data = {
+                    departamento: this.dept,
+                    municipio: this.municipio,
+                    circulo: this.number,
+                    coordinador: this.coordinador,
+                    encargado: this.encargado,
+                    orientador: this.orientador.split(',')
+                }
+
+                post(
+                    'circulos/add',
+                    data
+                ).catch( error => {
+                    console.log(error)
+                    return null
+                }).then(response => {
+                    router.push({ name: "AdminHome" })
+                })
             },
             cancelar() {
-
                 router.push({ name: "AdminHome" });
             }
           }
@@ -57,21 +73,17 @@ import router from '../router'
     h1, h2 {
         font-weight: normal;
     }
-
     ul {
         list-style-type: none;
         padding: 0;
     }
-
     li {
         display: inline-block;
         margin: 0 10px;
     }
-
     a {
         color: #42b983;
     }
-
     .inner {
       display: table;
       margin: 0 auto;

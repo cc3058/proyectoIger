@@ -8,7 +8,9 @@
     </v-toolbar>
 
     <v-content>
+    <v-responsive>
       <router-view/>
+    </v-responsive>
     </v-content>
   </div>
 </v-app>
