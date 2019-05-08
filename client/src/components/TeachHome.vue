@@ -1,10 +1,10 @@
 <template>
-    <v-container>
+    <div class="hello">
     <h1>{{ msg }}</h1>
     <v-btn depressed dark class="orange font-weight-bold" v-on:click="plan()">Enviar planificación y horario</v-btn>
     <br>
     <v-btn depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
-    </v-container>
+    </div>
 </template>
 
 

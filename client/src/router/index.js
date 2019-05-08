@@ -12,7 +12,6 @@ import StudentHome from '@/components/EstudHome'
 import TeachHome from '@/components/TeachHome'
 import AgregarACirculo from '@/components/AgregarACirculo'
 import Planificacion from '@/components/Planificacion'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
@@ -90,11 +89,6 @@ export default new Router({
               component: Planificacion
             }
           ]
-        },
-        {
-          path: '/helloWorld',
-          name: 'HelloWorld',
-          component: HelloWorld
         }
     ]
 })
