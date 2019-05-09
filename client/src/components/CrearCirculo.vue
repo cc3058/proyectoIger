@@ -3,39 +3,37 @@
     <v-container>
       <h1>{{ msg }}</h1>
       <h2>Información de ubicación</h2>
-      <v-container fluid grid-list-md px-5>
-        <v-layout row wrap align-center>
-          <v-flex xs12>
-            <v-text-field v-model="dept" label="Departamento"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field v-model="municipio" label="Municipio"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field label = "Número de círculo" v-model="number"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
-            <v-text-field label = "Dirección" v-model="direccion"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
+      <b-container fluid>
+        <b-row>
+          <b-col sm><v-text-field v-model="dept" label="Departamento"></v-text-field></b-col>
+          <b-col sm><v-text-field v-model="municipio" label="Municipio"></v-text-field></b-col>
+          <b-col sm><v-text-field label = "Número de círculo" v-model="number"></v-text-field></b-col>
+        </b-row>
+        <b-row>
+          <b-col sm><v-text-field label = "Dirección" v-model="direccion"></v-text-field></b-col>
+        </b-row>
+        <b-row>
+          <b-col sm>
             <v-text-field label = "Coordinador" v-model="coordinador"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
+          </b-col>
+          <b-col sm>
             <v-text-field label = "Encargado" v-model="encargado"></v-text-field>
-          </v-flex>
-          <v-flex xs12>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col sm>
             <v-textarea label = "Orientador (si es más de uno, separarlos por comas)" v-model="orientador"></v-textarea>
-          </v-flex>
-          <v-layout v-bin="binding">
-            <v-flex xs6 px-1>
-              <v-btn block mx5 depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
-            </v-flex>
-            <v-flex xs6 px-1>
-              <v-btn block mx5 depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
-            </v-flex>
-          </v-layout>
-        </v-layout>
-      </v-container>
+          </b-col>
+        </b-row>
+        <b-row align-h="center">
+          <b-col sm>
+            <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
+          </b-col>
+          <b-col sm>
+              <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
+          </b-col>
+        </b-row>
+      </b-container>
     </v-container>
   </v-responsive>
 </template>
