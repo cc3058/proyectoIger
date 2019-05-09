@@ -5,7 +5,7 @@
         <br>
         <v-flex xs6 offset-xs3>
           <div class="inner">
-          <v-text-field label = "Email" v-model="email"></v-text-field>
+          <v-text-field type="email" label = "Email" v-model="email" required ></v-text-field>
           <br>
           <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
           <br>

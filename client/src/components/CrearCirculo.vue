@@ -6,18 +6,30 @@
       <b-container fluid>
         <b-row>
           <b-col sm><v-text-field v-model="dept" label="Departamento"></v-text-field></b-col>
+          <span class="br" v-if="!dept" style="color:#FF0000;"> *Necesario</span>
+
           <b-col sm><v-text-field v-model="municipio" label="Municipio"></v-text-field></b-col>
+          <span v-if="!municipio" style="color:#FF0000;"> *Necesario</span>
+
           <b-col sm><v-text-field label = "Número de círculo" v-model="number"></v-text-field></b-col>
+          <span align="left" v-if="!number" style="color:#FF0000;"> *Necesario</span>
         </b-row>
         <b-row>
           <b-col sm><v-text-field label = "Dirección" v-model="direccion"></v-text-field></b-col>
+          <span align="left" v-if="!direccion" style="color:#FF0000;"> *Necesario</span>
+          <b-col sm><p align="left"> *formato correcto: Edificio Municipal, 6a calle y 4a ave, zona 1, San Lucas Sacatepéquez </p></b-col>
         </b-row>
         <b-row>
           <b-col sm>
             <v-text-field label = "Coordinador" v-model="coordinador"></v-text-field>
+            <span align="left" v-if="!coordinador" style="color:#FF0000;"> *Necesario</span>
+            <p align="left"> *formato correcto: Jorge Perez</p>
           </b-col>
           <b-col sm>
             <v-text-field label = "Encargado" v-model="encargado"></v-text-field>
+            <span align="left" v-if="!encargado" style="color:#FF0000;"> *Necesario</span>
+            <p align="left"> *formato correcto: Laura Morales </p>
+
           </b-col>
         </b-row>
         <b-row>
