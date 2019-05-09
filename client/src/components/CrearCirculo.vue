@@ -23,7 +23,7 @@
           <b-col sm>
             <v-text-field label = "Coordinador" v-model="coordinador"></v-text-field>
             <span align="left" v-if="!coordinador" style="color:#FF0000;"> *Necesario</span>
-            <p align="left"> *formato correcto: Jorge Perez</p>
+            <p align="left"> *formato correcto: Carlos Perez</p>
           </b-col>
           <b-col sm>
             <v-text-field label = "Encargado" v-model="encargado"></v-text-field>
