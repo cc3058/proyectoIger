@@ -74,9 +74,11 @@ users.post('/login', (req, res) => {
             }
         })
         .catch(err => {
-          console.log('hola')
             res.send('error: ' + err)
         })
 })
 
 module.exports = users;
+
+
+
