@@ -6,10 +6,18 @@
           <v-layout wrap align-center>
             <div class="inner">
             <br>
-            <v-text-field label = "Email" v-model="email"></v-text-field>
+            <v-text-field type="text" id="email" label = "Email" v-model="email"></v-text-field>
+            <span align="left" v-if="!email" style="color:#FF0000;"> *Necesario</span>
+            <p align="left"> *formato correcto: ejemploCorreo@gmail.com </p>
+
             <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
+            <span align="left" v-if="!password" style="color:#FF0000;"> *Necesario</span>
+
             <v-text-field label = "Nombre" v-model="first_name"></v-text-field>
+            <span align="left" v-if="!first_name" style="color:#FF0000;"> *Necesario</span>
+
             <v-text-field label = "Apellido" v-model="last_name"></v-text-field>
+            <span align="left" v-if="!last_name" style="color:#FF0000;"> *Necesario</span>
             <br>
             <v-select class="drop-down-conf" v-model="role" label="Tipo de usuario" :items="items" ></v-select>
             <br>
