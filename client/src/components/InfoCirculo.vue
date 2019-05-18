@@ -5,15 +5,11 @@
     <v-container fluid grid-list-md>
       <v-layout row wrap align-center>
         <div class="inner">
-        <v-flex xs6>
-          <v-date-picker v-model="fecha" label="Fecha" :reactive="reactive" ></v-date-picker>
-        </v-flex>
-          <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo a quien irá dirigida la información" :items="circles" ></v-select>
-          <v-text-field label = "Dirección" v-model="name"></v-text-field>
+          <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo que desea ver" :items="circles" ></v-select>
+          <v-text-field label = "Orientadores" v-model="orientadores" readonly></v-text-field>
           <v-textarea
           name="input-7-1"
-          label="Información"
-          hint="Planificación"
+          label="Información" readonly
         ></v-textarea>
         
           <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Enviar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
@@ -32,10 +28,11 @@ import router from '../router'
         data () {
             return {
                 msg: 'Enviar planificación',
-                name: '',
-                sector: '',
+                orientadores: '',
+                circulo: '',
                 region: '',
-                number: ''
+                number: '',
+                circles: ['Aca se jalaria de la db']
             }
         },
         methods: {

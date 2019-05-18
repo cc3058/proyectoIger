@@ -5,10 +5,10 @@
       <h2>Lista de Cotejo</h2>
       <b-container fluid>
           <b-row align-h="center">
-              <b-col sm="8"><v-text-field v-model="materia" label="Materia"></v-text-field> <!-- Este deberia ser un select (drop down) --></b-col>
+              <b-col sm="8"><v-select v-model="materia" label="Materia" :rules="notEmpty" required></v-select> <!-- Este deberia ser un select (drop down) --></b-col>
           </b-row>
           <b-row align-h="center">
-              <b-col sm="8"><v-text-field v-model="semana" label="Semana"></v-text-field> <!-- Este tambien --></b-col>
+              <b-col sm="8"><v-text-field v-model="semana" label="Semana" :rules="notEmpty" required></v-text-field> <!-- Este tambien --></b-col>
           </b-row>
           <b-row>
               <b-col sm><p>Pregunta 1</p></b-col>
@@ -89,7 +89,11 @@ import Api from '@/services/Api'
                 pregunta2: '',
                 pregunta3: '',
                 pregunta4: '',
-                pregunta5: ''
+                pregunta5: '',
+                materias:['Contabilidad','Física','Matemática','Literatura'],
+                notEmpty: [
+                  v => !!v || 'Requerido'
+                ],
             }
         },
         methods: {
