@@ -1,13 +1,13 @@
 <template>
-<v-app>
-  <div id="app">
-    <v-content>
-    <v-responsive>
-      <router-view/>
-    </v-responsive>
-    </v-content>
-  </div>
-</v-app>
+  <v-app id="app" v-bind:style="{ background: 'linear-gradient(to bottom, #b33009 0%, #ff5c00 100%)'}">
+    
+      <v-content>
+      <v-responsive>
+        <router-view/>
+      </v-responsive>
+      </v-content>
+    
+  </v-app>
 </template>
 
 <script>
@@ -20,11 +20,10 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  
+  display: flex;
+  height: 200%;
+  justify-content: center;
+  align-items: center;
+ 
 }
 </style>

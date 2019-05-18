@@ -1,10 +1,11 @@
 <template>
+ 
     
-    <v-layout id="card">
+    <v-layout id="card" >
         
-        <v-flex xs12 sm6 offset-sm3>
+        <v-flex xs12 sm6 offset-sm3 > 
             <v-card class="mx-auto"
-                color="#ffff"
+                id = "transparent"
                 light
                 max-width="600">
                 <img align="left" alt="Logo IGER" width="270" height="230" src="../assets/logo.png">
@@ -35,12 +36,13 @@
                             prepend-inner-icon="lock"
                             type="password"></v-text-field>
                 </v-card-text>
-                <v-card-text>
+                <v-card-text  class="text-md-center">
                     <v-btn color="primary" v-on:click="login()" dark>Iniciar sesión</v-btn>
                 </v-card-text>
             </v-card>
         </v-flex>
     </v-layout>
+    
 </template>
         
                         
@@ -49,11 +51,13 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 import router from '../router'
-    
+   
 
     export default {
         name: 'LogIn',
+     
         data () {
+           
             return {
                 msg: 'Inicia sesión',
                 email: '',
@@ -90,6 +94,14 @@ import router from '../router'
 <style>
     #card{
         margin-top: 3%;
+         
+    }
+    #transparent{
+        
+        background-color: white!important;
+        opacity: 0.87;
+        border-color: transparent!important;
+        border-radius: 4%;
     }
 
 </style>
