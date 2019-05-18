@@ -1,25 +1,48 @@
 <template>
-    <div class="hello">
-    <img src="../assets/logo.png">
-        <h1>{{ msg }}</h1>
-        <br>
-        <v-flex xs6 offset-xs3>
-          <div class="inner">
-          <v-text-field label = "Email" v-model="email"></v-text-field>
-          <br>
-          <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
-          <br>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="login()" >Iniciar sesión</v-btn>
-          </div>
+    
+    <v-layout>
+        
+        <v-flex xs12 sm6 offset-sm3>
+            <v-card class="mx-auto"
+                color="#ffff"
+                light
+                max-width="900">
+                <img src="../assets/logo.png">
+                <v-card-text class="headline font-weight-bold">
+                    <p class="text-md-center">{{ msg }}</p>
+                </v-card-text>
+                <v-card-text >
+                    <v-subheader>Correo electronico</v-subheader>
+                    <v-text-field v-model="email"
+                            outline
+                            clearable
+                            type="email"
+                            prepend-inner-icon="email"
+                            required ></v-text-field>                    
+                </v-card-text>
+                <v-card-text>
+                    <v-subheader>Contraseña</v-subheader>
+                    <v-text-field outline 
+                            clearable 
+                            v-model="password" 
+                            prepend-inner-icon="lock"
+                            type="password"></v-text-field>
+                </v-card-text>
+                <v-card-text>
+                    <v-btn color="primary" v-on:click="login()" dark>Iniciar sesión</v-btn>
+                </v-card-text>
+            </v-card>
         </v-flex>
-        <br>
-        <p>¿No tienes cuenta? <router-link to="/register">Registrarse</router-link></p>
-    </div>
+    </v-layout>
 </template>
+        
+                        
+
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 import router from '../router'
+    
 
     export default {
         name: 'LogIn',
@@ -57,27 +80,16 @@ import router from '../router'
     }
 </script>
 
-<style scoped>
-    h1, h2 {
-        font-weight: normal;
-    }
+<style>
+  .form-elegant .font-small {
+    font-size: 0.8rem; }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
+  .form-elegant .z-depth-1a {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }
-
-    .inner {
-      display: table;
-      margin: 0 auto;
-    }
+  .form-elegant .z-depth-1-half,
+  .form-elegant .btn:hover {
+    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
 </style>
