@@ -1,16 +1,23 @@
 <template>
     
-    <v-layout>
+    <v-layout id="card">
         
         <v-flex xs12 sm6 offset-sm3>
             <v-card class="mx-auto"
                 color="#ffff"
                 light
-                max-width="900">
-                <img src="../assets/logo.png">
-                <v-card-text class="headline font-weight-bold">
-                    <p class="text-md-center">{{ msg }}</p>
+                max-width="600">
+                <img align="left" alt="Logo IGER" width="270" height="230" src="../assets/logo.png">
+                <br>
+                <br>
+                <br>
+                <v-card-text >
+                    <h1 class="text-md-center">Bachillerato Digital</h1>
                 </v-card-text>
+                <br>
+                <br>
+                <br>
+                <br>
                 <v-card-text >
                     <v-subheader>Correo electronico</v-subheader>
                     <v-text-field v-model="email"
@@ -81,15 +88,9 @@ import router from '../router'
 </script>
 
 <style>
-  .form-elegant .font-small {
-    font-size: 0.8rem; }
+    #card{
+        margin-top: 3%;
+    }
 
-  .form-elegant .z-depth-1a {
-    -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
-    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25); }
-
-  .form-elegant .z-depth-1-half,
-  .form-elegant .btn:hover {
-    -webkit-box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15);
-    box-shadow: 0 5px 11px 0 rgba(85, 182, 255, 0.28), 0 4px 15px 0 rgba(36, 133, 255, 0.15); }
 </style>
+
