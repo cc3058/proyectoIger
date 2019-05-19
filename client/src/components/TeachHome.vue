@@ -1,9 +1,9 @@
 <template>
     <v-container>
     <h1>{{ msg }}</h1>
-    <v-btn depressed dark class="orange font-weight-bold" v-on:click="plan()">Enviar planificación y horario</v-btn>
+    <v-btn round depressed dark class="orange font-weight-bold" v-on:click="plan()">Ver datos de mi círculo</v-btn>
     <br>
-    <v-btn depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
+    <v-btn round depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
     </v-container>
 </template>
 
@@ -20,7 +20,7 @@ import router from '../router'
         },
         methods: {
         plan(){
-          router.push({name: 'Planificacion'})
+          router.push({name: 'CircleInfo'})
           },
           salir(){
             router.push({name: 'LogIn'})

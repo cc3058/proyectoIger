@@ -11,8 +11,9 @@ import Datos from '@/components/DatosEstudiante'
 import StudentHome from '@/components/EstudHome'
 import TeachHome from '@/components/TeachHome'
 import AgregarACirculo from '@/components/AgregarACirculo'
-import Planificacion from '@/components/Planificacion'
+import CircleInfo from '@/components/InfoCirculo'
 import HelloWorld from '@/components/HelloWorld'
+import ListaCotejo from '@/components/ListasCotejoEst'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
               path: 'cuenta',
               name: 'VerDatos',
               component: Datos
+            },
+            {
+              path: 'lista',
+              name: 'ListaCotejo',
+              component: ListaCotejo
             }
 
           ]
@@ -85,9 +91,9 @@ export default new Router({
               component: TeachHome
             },
             {
-              path: 'plan',
-              name: 'Planificacion',
-              component: Planificacion
+              path: 'orientadores',
+              name: 'CircleInfo',
+              component: CircleInfo
             }
           ]
         },

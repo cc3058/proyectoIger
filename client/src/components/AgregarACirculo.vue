@@ -1,20 +1,7 @@
 <template>
     <div class="hello">
-        <v-toolbar
-        id="core-toolbar"
-        app
-        color="bg-default"
-        prominent
-        >
-        <div class="v-toolbar-title">
-            <v-toolbar-title
-            class="tertiary--text font-weight-light"
-            >
-            Administrador
-            </v-toolbar-title>
-        </div>
+        <v-toolbar>
 
-        <v-spacer />
         <v-toolbar-items>
             <v-flex
             align-center
@@ -33,11 +20,9 @@
         <v-container fluid grid-list-xl>
         <v-layout wrap align-center>
             <div class="inner">
-            <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" ></v-select>
-            <v-select class="drop-down-conf" v-model="sector" label="Seleccione el sector" :items="sectores" ></v-select>
-            <v-select class="drop-down-conf" v-model="region" label="Seleccione la región" :items="sectores" ></v-select>
-            <v-select class="drop-down-conf" v-model="region" label="Seleccione el círculo al que desea agregar al usuario" :items="sectores" ></v-select>
-            <v-text-field label = "Ingrese el código del usuario a agregar" v-model="number"></v-text-field>
+            <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
+            <v-text-field v-model="circle" label="Ingrese el código del círculo" :items="sectores" :rules="notEmpty" required></v-text-field>
+            <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
             <v-btn depressed dark class="orange font-weight-bold" v-on:click="agregar()">Agregar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
             </div>
         </v-layout>
@@ -53,7 +38,11 @@ import router from '../router'
         name: 'UserType',
         data () {
             return {
-                msg: 'Agregar a Circulo'
+                msg: 'Agregar a Circulo',
+                items:['Estudiante','Orientador'],
+                notEmpty: [
+                  v => !!v || 'Requerido'
+                ],
             }
         },
         methods: {

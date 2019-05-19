@@ -31,37 +31,42 @@
     <v-container>
       <h1>{{ msg }}</h1>
       <h2>Información de ubicación</h2>
-      <b-container fluid>
-        <b-row>
-          <b-col sm><v-text-field v-model="dept" label="Departamento"></v-text-field></b-col>
-          <b-col sm><v-text-field v-model="municipio" label="Municipio"></v-text-field></b-col>
-          <b-col sm><v-text-field label = "Número de círculo" v-model="number"></v-text-field></b-col>
-        </b-row>
-        <b-row>
-          <b-col sm><v-text-field label = "Dirección" v-model="direccion"></v-text-field></b-col>
-        </b-row>
-        <b-row>
-          <b-col sm>
-            <v-text-field label = "Coordinador" v-model="coordinador"></v-text-field>
-          </b-col>
-          <b-col sm>
-            <v-text-field label = "Encargado" v-model="encargado"></v-text-field>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col sm>
-            <v-textarea label = "Orientador (si es más de uno, separarlos por comas)" v-model="orientador"></v-textarea>
-          </b-col>
-        </b-row>
-        <b-row align-h="center">
-          <b-col sm>
-            <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
-          </b-col>
-          <b-col sm>
-              <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
-          </b-col>
-        </b-row>
-      </b-container>
+      <v-form>
+        <b-container fluid>
+          <b-row>
+            <b-col sm><v-text-field v-model="dept" label="Departamento" :rules="notEmpty" required></v-text-field></b-col>
+
+            <b-col sm><v-text-field v-model="municipio" label="Municipio" :rules="notEmpty" required></v-text-field></b-col>
+
+            <b-col sm><v-text-field label = "Número de círculo" v-model="number" :rules="notEmpty" required></v-text-field></b-col>
+          </b-row>
+          <b-row>
+            <b-col sm><v-text-field label = "Dirección" v-model="direccion" :rules="notEmpty" required></v-text-field></b-col>
+          </b-row>
+          <b-row>
+            <b-col sm>
+              <v-text-field label = "Coordinador" v-model="coordinador" :rules="notEmpty" required></v-text-field>
+            </b-col>
+            <b-col sm>
+              <v-text-field label = "Encargado" v-model="encargado" :rules="notEmpty" required></v-text-field>
+
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm>
+              <v-textarea label = "Orientador (si es más de uno, separarlos por comas)" v-model="orientador" :rules="notEmpty" required></v-textarea>
+            </b-col>
+          </b-row>
+          <b-row align-h="center">
+            <b-col sm>
+              <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
+            </b-col>
+            <b-col sm>
+                <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
+            </b-col>
+          </b-row>
+        </b-container>
+      </v-form>
     </v-container>
   </v-responsive>
 </template>
@@ -75,14 +80,19 @@ import Api from '@/services/Api'
         name: 'UserType',
         data () {
             return {
+                valid: false,
                 msg: 'Crear Circulo',
+                
                 direccion: '',
                 dept: '',
                 municipio: '',
                 number: '',
                 coordinador: '',
                 encargado: '',
-                orientador: ''
+                orientador: '',
+                notEmpty: [
+                  v => !!v || 'Requerido'
+                ],
             }
         },
         methods: {

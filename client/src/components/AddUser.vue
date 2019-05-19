@@ -29,7 +29,7 @@
         name: 'AddUser',
         data () {
             return {
-                msg: 'Registrar nueva usuario',
+                msg: 'Registrar nuevo usuario',
                 types: ["Estudiante","Encargado/Maestro"]
             }
         },
