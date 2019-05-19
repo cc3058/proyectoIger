@@ -31,7 +31,7 @@
           </b-row>
           <b-row align-h="center">
             <b-col sm>
-              <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
+              <v-btn depressed dark class="orange font-weight-bold" v-on:click="validacion(e)">Crear círculo</v-btn>
             </b-col>
             <b-col sm>
                 <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
@@ -70,7 +70,28 @@ import Api from '@/services/Api'
         methods: {
             validacion(e){
                 if (this.direccion && this.dept && this.municipio && this.number && this.coordinador && this.encargado && this.orientador){
-                  return true;
+
+                  const post = Api().post
+
+                  const data = {
+                    departamento: this.dept,
+                    municipio: this.municipio,
+                    circulo: this.number,
+                    coordinador: this.coordinador,
+                    encargado: this.encargado,
+                    orientador: this.orientador.split(',')
+                  }
+
+                  post(
+                    'circulos/add',
+                    data
+                  ).catch( error => {
+                    console.log(error)
+                    return null
+                  }).then(response => {
+                    router.push({ name: "AdminHome" })
+                  })
+
                 }
 
                 this.errors = []
@@ -97,28 +118,7 @@ import Api from '@/services/Api'
                   this.errors.push('orientador requerida');
                 }
                 e.preventDefault();          
-            },
-            creado() {
-                const post = Api().post
-
-                const data = {
-                    departamento: this.dept,
-                    municipio: this.municipio,
-                    circulo: this.number,
-                    coordinador: this.coordinador,
-                    encargado: this.encargado,
-                    orientador: this.orientador.split(',')
-                }
-
-                post(
-                    'circulos/add',
-                    data
-                ).catch( error => {
-                    console.log(error)
-                    return null
-                }).then(response => {
-                    router.push({ name: "AdminHome" })
-                })
+      
             },
             cancelar() {
                 router.push({ name: "AdminHome" });
@@ -132,6 +132,8 @@ import Api from '@/services/Api'
 
               return binding
             }
+
+
           }
     }
 </script>
