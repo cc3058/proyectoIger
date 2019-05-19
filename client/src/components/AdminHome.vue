@@ -23,7 +23,7 @@
             >
             <v-btn flat v-on:click="nuevocirculo()">Circulos</v-btn>
             <v-btn flat v-on:click="asignar()">Asignar estudiantes a un circulo</v-btn>
-            <router-link flat to="/register">Registrar usuarios</router-link>
+            <v-btn flat v-on:click="registro()">Registrar usuarios</v-btn>
             <v-btn flat  v-on:click="salir()">Salir</v-btn>
             </v-flex>
         </v-toolbar-items>
@@ -53,6 +53,9 @@ import router from '../router'
           },
           salir(){
             router.push({name: 'LogIn'})
+            },
+            registro(){
+            router.push({name: 'Register'})
             }
         }
     }

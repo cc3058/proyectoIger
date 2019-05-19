@@ -8,7 +8,7 @@
                 id = "transparent"
                 light
                 max-width="600">
-                <img align="left" alt="Logo IGER" width="270" height="230" src="../assets/logo.png">
+                <img align="left" alt="Logo IGER" width="230" height="230" src="../assets/logo.png">
                 <br>
                 <br>
                 <br>
@@ -103,6 +103,7 @@ import router from '../router'
         opacity: 0.87;
         border-color: transparent!important;
         border-radius: 4%;
+        padding: 40px;
     }
 
 </style>
