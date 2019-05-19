@@ -11,10 +11,10 @@ const passport = require('passport')
 const mongoose = require('mongoose')
 
 const port = 3000
-const DB_URI = "mongodb://localhost:27017/igerDB" // mongodb://domain:port/database-name
+const DB_URI = "mongodb://127.0.0.1/igerDB" // mongodb://domain:port/database-name
 
 // Connect to MongoDB
-mongoose.connect(DB_URI)
+mongoose.connect('mongodb://127.0.0.1/igerDB')
 
 mongoose.connection.once('connected', function() {
     console.log("Database connected to " + DB_URI)

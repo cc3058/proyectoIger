@@ -1,5 +1,33 @@
 <template>
   <v-responsive>
+      <v-toolbar
+        id="core-toolbar"
+        app
+        color="bg-default"
+        prominent
+        >
+        <div class="v-toolbar-title">
+            <v-toolbar-title
+            class="tertiary--text font-weight-light"
+            >
+            Administrador
+            </v-toolbar-title>
+        </div>
+
+        <v-spacer />
+        <v-toolbar-items>
+            <v-flex
+            align-center
+            layout
+            py-2
+            >
+            <v-btn flat v-on:click="nuevocirculo()">Circulos</v-btn>
+            <v-btn flat v-on:click="asignar()">Asignar estudiantes a un circulo</v-btn>
+            <router-link flat to="/register">Registrar usuarios</router-link>
+            <v-btn flat  v-on:click="salir()">Salir</v-btn>
+            </v-flex>
+        </v-toolbar-items>
+        </v-toolbar>
     <v-container>
       <h1>{{ msg }}</h1>
       <h2>Información de ubicación</h2>
@@ -58,6 +86,15 @@ import Api from '@/services/Api'
             }
         },
         methods: {
+            nuevocirculo() {
+                router.push({name: 'Circle'});
+            },
+            asignar(){
+                router.push({name: 'Agregar'})
+            },
+            salir(){
+                router.push({name: 'LogIn'})
+            },
             creado() {
                 const post = Api().post
 

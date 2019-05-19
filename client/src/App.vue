@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app" v-bind:style="{ background: 'linear-gradient(to bottom, #b33009 0%, #ff5c00 100%)'}">
+  <v-app id="app" >
     
       <v-content>
       <v-responsive>

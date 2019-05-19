@@ -1,12 +1,36 @@
 <template>
-  <v-container>
-    <h1>{{ msg }}</h1>
-        <v-btn round depressed dark class="orange font-weight-bold text-xs-left" v-on:click="nuevocirculo()">Crear círculo</v-btn>
-        <br>
-        <v-btn round depressed dark class="orange font-weight-bold text-xs-left" v-on:click="asignar()">Asignar miembros a círculo</v-btn>
-        <br>
-        <v-btn round depressed dark class="grey font-weight-bold text-xs-left" v-on:click="salir()">Salir</v-btn>
-  </v-container>
+  <div>
+      <v-toolbar
+        id="core-toolbar"
+        app
+        color="bg-default"
+        prominent
+        >
+        <div class="v-toolbar-title">
+            <v-toolbar-title
+            class="tertiary--text font-weight-light"
+            >
+            Administrador
+            </v-toolbar-title>
+        </div>
+
+        <v-spacer />
+        <v-toolbar-items>
+            <v-flex
+            align-center
+            layout
+            py-2
+            >
+            <v-btn flat v-on:click="nuevocirculo()">Circulos</v-btn>
+            <v-btn flat v-on:click="asignar()">Asignar estudiantes a un circulo</v-btn>
+            <router-link flat to="/register">Registrar usuarios</router-link>
+            <v-btn flat  v-on:click="salir()">Salir</v-btn>
+            </v-flex>
+        </v-toolbar-items>
+        </v-toolbar>
+      
+    
+  </div>
 </template>
 
 
