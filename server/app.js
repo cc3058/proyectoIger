@@ -10,7 +10,7 @@ const passport = require('passport')
 // MongoDB Driver
 const mongoose = require('mongoose')
 
-const port = 3000
+const port = process.env.PORT || 3000
 const DB_URI = "mongodb://localhost:27017/igerDB" // mongodb://domain:port/database-name
 
 // Connect to MongoDB

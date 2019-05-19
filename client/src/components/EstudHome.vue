@@ -3,6 +3,8 @@
     <h1>{{ msg }}</h1>
     <v-btn depressed dark class="orange font-weight-bold">Ver datos</v-btn>
     <br>
+    <v-btn depressed dark class="orange font-weight-bold" v-on:click="lista()">Enviar Lista de cotejo</v-btn>
+    <br>
     <v-btn depressed dark class="grey font-weight-bold" v-on:click="salir()">Salir</v-btn>
     </div>
 </template>
@@ -20,6 +22,9 @@ import router from '../router'
         methods: {
         salir(){
           router.push({name: 'LogIn'})
+          },
+        lista(){
+          router.push({name: 'ListaCotejo'})
           }
         }
     }
