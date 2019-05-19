@@ -9,7 +9,7 @@
           <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
           <v-text-field v-model="circle" label="Ingrese el código del círculo" :items="sectores" :rules="notEmpty" required></v-text-field>
           <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="agregar()">Agregar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="validacion(e)">Agregar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
         </div>
       </v-layout>
     </v-container>
@@ -32,12 +32,23 @@ import router from '../router'
             }
         },
         methods: {
-            agregar() {
-
-                router.push({ name: "AdminHome" });
+            validacion(e){
+                if (this.items && this.circle && this.user) {
+                  router.push({ name: "AdminHome" });
+                }
+                this.errors = [];
+                if (!this.items) {
+                  this.errors.push('Tipo requerido.');
+                }
+                if (!this.circle) {
+                  this.errors.push('Circulo requerido');
+                }
+                if (!this.user) {
+                  this.errors.push('Usuario requerido');
+                }
+                e.preventDefault();
             },
             cancelar() {
-
                 router.push({ name: "AdminHome" });
             }
           }
