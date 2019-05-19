@@ -37,7 +37,7 @@
                             type="password"></v-text-field>
                 </v-card-text>
                 <v-card-text  class="text-md-center">
-                    <v-btn color="primary" v-on:click="login()" dark>Iniciar sesión</v-btn>
+                    <v-btn round color="primary" v-on:click="login()" dark>Iniciar sesión</v-btn>
                 </v-card-text>
             </v-card>
         </v-flex>
