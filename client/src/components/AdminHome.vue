@@ -3,8 +3,9 @@
       <v-toolbar
         id="core-toolbar"
         app
-        color="bg-default"
         prominent
+        dark 
+        color="orange"
         >
         <div class="v-toolbar-title">
             <v-toolbar-title

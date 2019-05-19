@@ -3,8 +3,9 @@
       <v-toolbar
         id="core-toolbar"
         app
-        color="bg-default"
         prominent
+        dark 
+        color="orange"
         >
         <div class="v-toolbar-title">
             <v-toolbar-title
@@ -23,16 +24,20 @@
             >
             <v-btn flat v-on:click="nuevocirculo()">Circulos</v-btn>
             <v-btn flat v-on:click="asignar()">Asignar estudiantes a un circulo</v-btn>
-            <router-link flat to="/register">Registrar usuarios</router-link>
+            <v-btn flat v-on:click="registro()">Registrar usuarios</v-btn>
             <v-btn flat  v-on:click="salir()">Salir</v-btn>
             </v-flex>
         </v-toolbar-items>
         </v-toolbar>
     <v-container>
-      <h1>{{ msg }}</h1>
-      <h2>Información de ubicación</h2>
+      <h1 align="center">{{ msg }}</h1>
+      <br>
+      <br>
+           
       <v-form>
         <b-container fluid>
+            <h4>Información de ubicación</h4>
+            <br>
           <b-row>
             <b-col sm><v-text-field v-model="dept" label="Departamento" :rules="notEmpty" required></v-text-field></b-col>
 
@@ -43,6 +48,10 @@
           <b-row>
             <b-col sm><v-text-field label = "Dirección" v-model="direccion" :rules="notEmpty" required></v-text-field></b-col>
           </b-row>
+          <hr>
+          <br>
+          <h4>Información de usuarios</h4>
+          <br>
           <b-row>
             <b-col sm>
               <v-text-field label = "Coordinador" v-model="coordinador" :rules="notEmpty" required></v-text-field>
@@ -57,13 +66,12 @@
               <v-textarea label = "Orientador (si es más de uno, separarlos por comas)" v-model="orientador" :rules="notEmpty" required></v-textarea>
             </b-col>
           </b-row>
+          <hr>
           <b-row align-h="center">
             <b-col sm>
-              <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
+              <v-btn round block color='primary' depressed dark class="orange font-weight-bold" v-on:click="creado()">Crear círculo</v-btn>
             </b-col>
-            <b-col sm>
-                <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
-            </b-col>
+            
           </b-row>
         </b-container>
       </v-form>
@@ -81,7 +89,7 @@ import Api from '@/services/Api'
         data () {
             return {
                 valid: false,
-                msg: 'Crear Circulo',
+                msg: 'Creación de círculos',
                 
                 direccion: '',
                 dept: '',
@@ -146,7 +154,8 @@ import Api from '@/services/Api'
 
 <style scoped>
     h1, h2 {
-        font-weight: normal;
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 50px;
     }
     ul {
         list-style-type: none;
@@ -158,5 +167,10 @@ import Api from '@/services/Api'
     }
     a {
         color: #42b983;
+    }
+    hr{
+        height: 10px;
+        border: 0;
+        box-shadow: 0 10px 10px -10px #8c8b8b inset;
     }
 </style>

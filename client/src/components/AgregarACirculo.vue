@@ -1,7 +1,21 @@
 <template>
-    <div class="hello">
-        <v-toolbar>
+    <div >
+        <v-toolbar
+        id="core-toolbar"
+        app
+        prominent
+        dark 
+        color="orange"
+        >
+        <div class="v-toolbar-title">
+            <v-toolbar-title
+            class="tertiary--text font-weight-light"
+            >
+            Administrador
+            </v-toolbar-title>
+        </div>
 
+        <v-spacer />
         <v-toolbar-items>
             <v-flex
             align-center
@@ -10,7 +24,7 @@
             >
             <v-btn flat v-on:click="nuevocirculo()">Circulos</v-btn>
             <v-btn flat v-on:click="asignar()">Asignar estudiantes a un circulo</v-btn>
-            <router-link flat to="/register">Registrar usuarios</router-link>
+            <v-btn flat v-on:click="registro()">Registrar usuarios</v-btn>
             <v-btn flat  v-on:click="salir()">Salir</v-btn>
             </v-flex>
         </v-toolbar-items>

@@ -1,5 +1,6 @@
 <template>
-  <v-app id="app" >
+ 
+  <v-app id="app" v-bind:style="{ background: '#ffff'}">
     
       <v-content>
       <v-responsive>
@@ -19,6 +20,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Francois+One|Patua+One&display=swap');
 #app {
   display: flex;
   height: 200%;
