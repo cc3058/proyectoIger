@@ -68,6 +68,36 @@ import Api from '@/services/Api'
             }
         },
         methods: {
+            validacion(e){
+                if (this.direccion && this.dept && this.municipio && this.number && this.coordinador && this.encargado && this.orientador){
+                  return true;
+                }
+
+                this.errors = []
+
+                if(!this.direccion){
+                  this.errors.push('dirrección requerida');
+                }
+                if(!this.dept){
+                  this.errors.push('departamento requerida');
+                }
+                if(!this.municipio){
+                  this.errors.push('municipio requerida');
+                }
+                if(!this.number){
+                  this.errors.push('numero requerida');
+                }
+                if(!this.coordinador){
+                  this.errors.push('coordinador requerido');
+                }
+                if(!this.encargado){
+                  this.errors.push('encargado requerida');
+                }
+                if(!this.orientador){
+                  this.errors.push('orientador requerida');
+                }
+                e.preventDefault();          
+            },
             creado() {
                 const post = Api().post
 
