@@ -1,26 +1,57 @@
 <template>
-    <div class="hello">
-    <img src="../assets/logo.png">
-        <h1>{{ msg }}</h1>
-        <v-container fluid grid-list-xl>
-          <v-layout wrap align-center>
-            <div class="inner">
-            <br>
-            <v-text-field label = "Email" v-model="email"></v-text-field>
-            <v-text-field label = "Contraseña" v-model="password" type="password"></v-text-field>
-            <v-text-field label = "Nombre" v-model="first_name"></v-text-field>
-            <v-text-field label = "Apellido" v-model="last_name"></v-text-field>
-            <br>
-            <v-select class="drop-down-conf" v-model="role" label="Tipo de usuario" :items="items" ></v-select>
-            <br>
-            <v-btn depressed dark class="orange font-weight-bold" v-on:click="register()">Registrarme</v-btn>
-            <br>
-            </div>
-          </v-layout>
-        </v-container>
-        <br>
-        <a style="cursor: pointer; text-decoration: underline" v-on:click="navigate()">Regresar</a>
-    </div>
+    <v-layout id="card" >
+        
+        <v-flex xs12 sm6 offset-sm3 > 
+            <v-card class="mx-auto"
+                id = "transparent"
+                light
+                max-width="600">
+                <img align="left" alt="Logo IGER" width="270" height="230" src="../assets/logo.png">
+                <br>
+                <br>
+                <br>
+                <v-card-text >
+                    <h1 class="text-md-center">Bachillerato Digital</h1>
+                </v-card-text>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                <v-card-text>
+                    <v-subheader>Correo electronico</v-subheader>
+                    <v-text-field prepend-inner-icon="email" v-model="email"></v-text-field>
+                </v-card-text>
+                <v-card-text>
+                    <v-subheader>Contraseña</v-subheader>
+                    <v-text-field prepend-inner-icon="lock" v-model="password" type="password"></v-text-field>
+                </v-card-text>
+                <v-layout row wrap>
+                    <v-flex xs12 sm6>
+                        <v-card-text>
+                            <v-subheader>Nombre</v-subheader>
+                            <v-text-field  v-model="first_name"></v-text-field>
+                        </v-card-text>
+                    </v-flex>
+                    <v-flex xs12 sm6>
+                        <v-card-text>
+                            <v-subheader>Apellido</v-subheader>
+                            <v-text-field  v-model="last_name"></v-text-field>
+                        </v-card-text>
+                    </v-flex>
+                </v-layout>
+                <v-card-text>
+                    <v-select class="drop-down-conf" prepend-inner-icon="person" v-model="role" label="Tipo de usuario" :items="items" ></v-select>
+                </v-card-text>
+               <v-card-text  class="text-md-center">
+                    <v-btn color="primary" v-on:click="register()" dark>Registrar usuario</v-btn>
+                </v-card-text>
+                
+                
+            </v-card>
+        </v-flex>
+    </v-layout>
+   
 </template>
 
 <script>
@@ -69,31 +100,17 @@
     }
 </script>
 
-<style scoped>
-    h1, h2 {
-        font-weight: normal;
+<style>
+    #card{
+        margin-top: 3%;
+         
+    }
+    #transparent{
+        
+        background-color: white!important;
+        opacity: 0.87;
+        border-color: transparent!important;
+        border-radius: 4%;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }
-
-    .inner {
-      display: table;
-      margin: 0 auto;
-    }
-
-    .drop-down-conf {
-    margin-top: 0px;
-    }
 </style>

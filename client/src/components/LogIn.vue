@@ -94,6 +94,7 @@ import router from '../router'
 <style>
     #card{
         margin-top: 3%;
+        
          
     }
     #transparent{
