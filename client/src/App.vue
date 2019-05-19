@@ -26,6 +26,7 @@ export default {
   height: 200%;
   justify-content: center;
   align-items: center;
+  font-family: 'Archivo Black', sans-serif;
  
 }
 </style>

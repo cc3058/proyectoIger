@@ -44,7 +44,7 @@
                     <v-select class="drop-down-conf" prepend-inner-icon="person" v-model="role" label="Tipo de usuario" :items="items" ></v-select>
                 </v-card-text>
                <v-card-text  class="text-md-center">
-                    <v-btn round color="primary" v-on:click="register()" dark>Registrar usuario</v-btn>
+                    <v-btn round large color="primary" v-on:click="register()" dark>Registrar usuario</v-btn>
                 </v-card-text>
                 
                 
