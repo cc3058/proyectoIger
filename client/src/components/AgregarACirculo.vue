@@ -29,17 +29,22 @@
             </v-flex>
         </v-toolbar-items>
         </v-toolbar>
-        <h1>{{ msg }}</h1>
-        <h2>Ingreso de usuarios</h2>
-        <v-container fluid grid-list-xl>
-        <v-layout wrap align-center>
-            <div class="inner">
-            <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
-            <v-text-field v-model="circle" label="Ingrese el código del círculo" :items="sectores" :rules="notEmpty" required></v-text-field>
-            <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
-            <v-btn depressed dark class="orange font-weight-bold" v-on:click="agregar()">Agregar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
-            </div>
-        </v-layout>
+        <h1 align="center">{{ msg }}</h1>
+        <br>
+        
+        <v-container>
+            <h4>Ingreso de usuarios</h4>
+            <br>
+            <v-form>
+                
+                <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
+                <v-text-field v-model="circle" label="Ingrese el código del círculo" :items="sectores" :rules="notEmpty" required></v-text-field>
+                <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
+                <br>
+                <v-btn depressed round block color="primary" v-on:click="agregar()">Agregar</v-btn>
+                 
+                
+            </v-form>
         </v-container>
     </div>
 </template>
@@ -52,7 +57,7 @@ import router from '../router'
         name: 'UserType',
         data () {
             return {
-                msg: 'Agregar a Circulo',
+                msg: 'Agregar a círculo',
                 items:['Estudiante','Orientador'],
                 notEmpty: [
                   v => !!v || 'Requerido'
@@ -84,7 +89,9 @@ import router from '../router'
 
 <style scoped>
     h1, h2 {
-        font-weight: normal;
+        font-family: 'Archivo Black', sans-serif;
+        font-size: 50px;
+        
     }
 
     ul {
