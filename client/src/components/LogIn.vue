@@ -66,7 +66,7 @@ import router from '../router'
         },
         methods: {
         async login() {
-          //router.push({name: "StudentHome"});
+          router.push({name: "Encargado"});
           try {
             const response = await AuthenticationService.login({
               email: this.email,

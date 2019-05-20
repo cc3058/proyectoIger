@@ -14,6 +14,8 @@ import AgregarACirculo from '@/components/AgregarACirculo'
 import CircleInfo from '@/components/InfoCirculo'
 import HelloWorld from '@/components/HelloWorld'
 import ListaCotejo from '@/components/ListasCotejoEst'
+import Encargado from '@/components/Encargado'
+
 
 Vue.use(Router)
 
@@ -101,6 +103,11 @@ export default new Router({
           path: '/helloWorld',
           name: 'HelloWorld',
           component: HelloWorld
+        },
+        {
+          path: '/encargado',
+          name: 'Encargado',
+          component: Encargado,
         }
     ]
 })
