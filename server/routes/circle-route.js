@@ -29,5 +29,18 @@ postRoutes.route('/').get(function (req, res){
     });
 });
 
+postRoutes.route('/orientador').get(function (req, res) {
+    Post.find({
+        encargado: req.query.encargado
+    }, function(err, circulos){
+        if(err){
+            res.json(err);
+        } else {
+            res.json(circulos.orientador)
+        }
+    });
+});
+
+
 
 module.exports = postRoutes;
