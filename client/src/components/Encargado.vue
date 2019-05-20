@@ -7,6 +7,7 @@
 
 
 <script>
+//test
     export default {
         name: 'UserType',
         data () {
