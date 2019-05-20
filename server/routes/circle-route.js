@@ -36,10 +36,11 @@ postRoutes.route('/orientador').get(function (req, res) {
         if(err){
             res.json(err);
         } else {
-            res.json(circulos.orientador)
+            res.json({dpto: circulos.departamento, mun: circulos.municipio, num: circulos.num, orientadores: circulos.orientador})
         }
     });
 });
+
 
 
 

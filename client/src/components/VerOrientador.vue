@@ -32,7 +32,7 @@
         <v-form>
             <b-container fluid>
                 <v-text-field label = "Ingresar orientador" v-model="encargado" required></v-text-field>
-                <v-btn round block color='primary' depressed dark class="orange font-weight-bold" v-on:click="search()">Ver orientador</v-btn>
+                <v-btn round block color='primary' depressed dark class="font-weight-bold" v-on:click="search()">Ver orientadores</v-btn>
             </b-container>
         </v-form>
         <ul>
@@ -62,7 +62,7 @@ export default {
                     }
                 }
             ).then(result => {
-                this.orientadores = result.data
+                this.orientadores = result.data.orientadores
             }).catch(error => {
                 console.log(error)
             })

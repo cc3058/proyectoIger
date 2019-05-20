@@ -1,11 +1,43 @@
 <template>
     <div class="hello">
+        <v-toolbar
+        id="core-toolbar"
+        app
+        prominent
+        dark 
+        color="orange"
+        >
+        <div class="v-toolbar-title">
+            <v-toolbar-title
+            class="tertiary--text font-weight-light"
+            >
+            Encargado
+            </v-toolbar-title>
+        </div>
+
+        <v-spacer />
+        <v-toolbar-items>
+            <v-flex
+            align-center
+            layout
+            py-2
+            >
+            <v-btn flat v-on:click="circulos()">Info de Circulo</v-btn>
+            <v-btn flat  v-on:click="salir()">Salir</v-btn>
+            </v-flex>
+        </v-toolbar-items>
+        </v-toolbar>
+
     <h1>{{ msg }}</h1>
     <v-container fluid grid-list-md>
       <v-layout row wrap align-center>
         <div class="inner">
+          <v-text-field label = "Ingrese su nombre (encargado)" id ="encargado"></v-text-field>
+          <v-btn depressed dark class="orange font-weight-bold" v-on:click="buscar()">Buscar</v-btn>
           <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo que desea ver" id = "circulo" :items="circles" ></v-select>
-          <v-text-field label = "Orientadores" readonly id ="orientadores"></v-text-field>
+          <ul>
+            <li v-for="orientador in orientadores" v-bind:key="orientador">{{orientador}}</li>
+        </ul>
           <br>
           <h3><small>Estudiantes</small></h3>
           <b-pagination
@@ -17,7 +49,6 @@
             ></b-pagination>
             <p class="mt-3">Página actual: {{ currentPage }}</p>
             <b-table striped hover :fields="fields" :items="items" :per-page="perPage" :current-page="currentPage"></b-table>
-          <v-btn depressed dark class="orange font-weight-bold" v-on:click="creado()">Enviar</v-btn> <v-btn depressed dark class="grey font-weight-bold" v-on:click="cancelar()">Cancelar</v-btn>
         </div>
       </v-layout>
     </v-container>
@@ -32,6 +63,8 @@ import router from '../router'
         name: 'UserType',
         data () {
             return {
+                encargado: '',
+                orientadores: [],
                 msg: 'Información de círculo',
                 circulo: '',
                 circles: ['Aca se jalaria de la db'],
@@ -66,13 +99,24 @@ import router from '../router'
             }
         },
         methods: {
-            creado() {
-
-                router.push({ name: "AdminHome" });
+            buscar() {
+                const get = Api().get
+                get(
+                    'circulos/orientador',
+                    {
+                        params: {
+                            encargado: this.encargado
+                        }
+                    }
+                ).then(result => {
+                    this.orientadores = result.data
+                }).catch(error => {
+                    console.log(error)
+                })
             },
-            cancelar() {
+            salir() {
 
-                router.push({ name: "AdminHome" });
+                router.push({ name: "LogIn" });
             }
           },
         computed: {

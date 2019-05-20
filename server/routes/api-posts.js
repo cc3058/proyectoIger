@@ -23,7 +23,6 @@ users.post("/register", (req, res) => {
         password: req.body.password,
         role: req.body.role
     }
-
     User.findOne({
         email: req.body.email
     })
