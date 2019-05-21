@@ -31,12 +31,12 @@
         </v-toolbar>
         <v-form>
             <b-container fluid>
-                <v-text-field label = "Ingresar encargado" v-model="encargado" required></v-text-field>
-                <v-btn round block color='primary' depressed dark class="font-weight-bold" v-on:click="search()">Ver orientadores</v-btn>
+                <v-text-field label = "Ingresar coordinador" v-model="coordinador" required></v-text-field>
+                <v-btn round block color='primary' depressed dark class="font-weight-bold" v-on:click="search()">Ver círculos</v-btn>
             </b-container>
         </v-form>
         <ul>
-            <li v-for="orientador in orientadores" v-bind:key="orientador">{{orientador}}</li>
+            <li v-for="circulo in circulos" v-bind:key="circulo">{{circulo}}</li>
         </ul>
     </div>
 </template>
@@ -44,11 +44,11 @@
 import Api from '@/services/Api'
 import axios from 'axios'
 export default {
-    name: 'VerOrientador',
+    name: 'VerCirculos',
     data() {
         return {
-            encargado: '',
-            orientadores: []
+            coordinador: '',
+            circulos: []
         }
     },
     methods: {
@@ -56,18 +56,24 @@ export default {
             const get = Api().get
 
             const params = {
-                        encargado: this.encargado
+                        coordinador: this.coordinador
                     }
-
+            
             get(
-                'circulos/orientador',
+                'circulos/coordinador',
                 {params}
                 
             ).then((response) => {
-                this.orientadores = response.data.orientadores;
-                console.log(response);
+                var resultado = response.data.length
+                var circulosres = []
+                    
+                    for(var row=0;row<resultado;row++){
+                        
+                        circulosres.push(response.data[row].dpto + ", " +response.data[row].mun + ", " + response.data[row].num)
+                    }
+                this.circulos = circulosres
             }).catch(error => {
-                console.log(error)
+
             })
         }
     }

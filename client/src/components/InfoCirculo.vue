@@ -34,7 +34,7 @@
         <div class="inner">
           <v-text-field label = "Ingrese su nombre (encargado)" v-model="encargado"></v-text-field>
           <v-btn depressed dark class="orange font-weight-bold" v-on:click="buscar()">Buscar</v-btn>
-          <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo que desea ver" id = "circulo" :items="circles" ></v-select>
+          <v-select class="drop-down-conf" v-model="orientadores" label="Seleccione el círculo que desea ver" id = "circulo" :items="circles" :item-value="circles.value"></v-select>
           <ul>            
             <p>Orientadores</p>
             <li v-for="orientador in orientadores" v-bind:key="orientador">{{orientador}}</li>
@@ -66,7 +66,6 @@ import Api from '@/services/Api'
             return {
                 encargado: '',
                 orientadores: [],
-                allorientadores: [],
                 msg: 'Información de círculo',
                 circulo: '',
                 circles: [],
@@ -115,15 +114,12 @@ import Api from '@/services/Api'
                 ).then((response) => {
                     var resultado = response.data.length
                     var circulosres = []
-                    var orientadoresres = []
                     
                     for(var row=0;row<resultado;row++){
                         
-                        circulosres.push(response.data[row].dpto + ", " +response.data[row].mun + ", " + response.data[row].num)
-                        orientadoresres.push(response.data[row].orientadores)
+                        circulosres.push({text: response.data[row].dpto + ", " +response.data[row].mun + ", " + response.data[row].num, value: response.data[row].orientadores})
                     }
                     this.circles = circulosres
-                    this.allorientadores = orientadoresres;
                 }).catch(error => {
                     console.log(error)
                 })

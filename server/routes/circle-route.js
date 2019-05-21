@@ -33,7 +33,6 @@ postRoutes.route('/orientador').get(async function (req, res) {
     Post.find({
         encargado: await req.query.encargado
     }, async function(err, circulos){
-        console.log("entre2")
         if(err){
             await res.json(err);
         } else {
@@ -45,8 +44,25 @@ postRoutes.route('/orientador').get(async function (req, res) {
             }
             res.json(allresults)
 
+        }
+    });
+});
+
+postRoutes.route('/coordinador').get(async function (req, res) {
+    Post.find({
+        coordinador: await req.query.coordinador
+    }, async function(err, circulos){
+        if(err){
+            await res.json(err);
+        } else {
+            var allresults = []
+            for(row in circulos)
+            {
+                var fetchoneresult = await {dpto: circulos[row].departamento, mun: circulos[row].municipio, num: circulos[row].circulo}
+                allresults.push(fetchoneresult)
+            }
+            res.json(allresults)
             console.log(allresults)
-            //res.json(circulos.orientador)
         }
     });
 });

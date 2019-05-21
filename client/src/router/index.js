@@ -15,7 +15,7 @@ import CircleInfo from '@/components/InfoCirculo'
 import HelloWorld from '@/components/HelloWorld'
 import ListaCotejo from '@/components/ListasCotejoEst'
 import Encargado from '@/components/Encargado'
-import VerOrientador from '@/components/VerOrientador'
+import VerCirculos from '@/components/VerCirculos'
 
 
 Vue.use(Router)
@@ -80,6 +80,11 @@ export default new Router({
               path: 'agregar',
               name: 'Agregar',
               component: AgregarACirculo
+            },
+            {
+              path: 'circulos',
+              name: 'VerCirculos',
+              component: VerCirculos
             }
           ]
         },
@@ -94,7 +99,7 @@ export default new Router({
               component: TeachHome
             },
             {
-              path: 'orientadores',
+              path: 'infocirculo',
               name: 'CircleInfo',
               component: CircleInfo
             }
@@ -111,10 +116,6 @@ export default new Router({
           name: 'Encargado',
           component: Encargado,
         },
-        {
-          path: '/verorientador',
-          name: 'VerOrientador',
-          component: VerOrientador
-        }
+        
     ]
 })

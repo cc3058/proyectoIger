@@ -38,7 +38,7 @@
             <v-form>
                 
                 <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
-                <v-text-field v-model="circle" label="Ingrese el código del círculo" :items="sectores" :rules="notEmpty" required></v-text-field>
+                <v-text-field v-model="circle" label="Ingrese el código del círculo como: Departamento, Municipio, Número" :items="sectores" :rules="notEmpty" required></v-text-field>
                 <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
                 <br>
                 <v-btn depressed round block color="primary" v-on:click="agregar()">Agregar</v-btn>
