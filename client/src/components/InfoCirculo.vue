@@ -32,10 +32,12 @@
     <v-container fluid grid-list-md>
       <v-layout row wrap align-center>
         <div class="inner">
-          <v-text-field label = "Ingrese su nombre (encargado)" id ="encargado"></v-text-field>
+          <v-text-field label = "Ingrese su nombre (encargado)" v-model="encargado"></v-text-field>
           <v-btn depressed dark class="orange font-weight-bold" v-on:click="buscar()">Buscar</v-btn>
-          <v-select class="drop-down-conf" v-model="circulo" label="Seleccione el círculo que desea ver" id = "circulo" :items="circles" ></v-select>
           <ul>
+            <p>Círculo</p>
+            <li v-bind:key="circulo">{{circulo}}</li>
+            <p>Orientadores</p>
             <li v-for="orientador in orientadores" v-bind:key="orientador">{{orientador}}</li>
         </ul>
           <br>
@@ -58,7 +60,7 @@
 
 <script>
 import router from '../router'
-
+import Api from '@/services/Api'
     export default {
         name: 'UserType',
         data () {
@@ -67,7 +69,7 @@ import router from '../router'
                 orientadores: [],
                 msg: 'Información de círculo',
                 circulo: '',
-                circles: ['Aca se jalaria de la db'],
+                circles: [],
                 //De la tabla
                 perPage: 5,
                 currentPage: 1,
@@ -101,15 +103,19 @@ import router from '../router'
         methods: {
             buscar() {
                 const get = Api().get
+
+                const params = {
+                        encargado: this.encargado
+                    }
+
                 get(
                     'circulos/orientador',
-                    {
-                        params: {
-                            encargado: this.encargado
-                        }
-                    }
-                ).then(result => {
-                    this.orientadores = result.data
+                    {params}
+                    
+                ).then((response) => {
+                    this.orientadores = response.data.orientadores;
+                    this.circulo = response.data.dpto + ", " + response.data.mun + ", " + response.data.num
+                    console.log(response);
                 }).catch(error => {
                     console.log(error)
                 })

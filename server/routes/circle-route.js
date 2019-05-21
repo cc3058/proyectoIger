@@ -29,16 +29,16 @@ postRoutes.route('/').get(function (req, res){
     });
 });
 
-postRoutes.route('/orientador').get(function (req, res) {
+postRoutes.route('/orientador').get(async function (req, res) {
     Post.find({
-        encargado: req.query.encargado
-    }, function(err, circulos){
+        encargado: await req.query.encargado
+    }, async function(err, circulos){
         console.log("entre2")
         if(err){
-            res.json(err);
+            await res.json(err);
         } else {
-            res.json({dpto: circulos.departamento, mun: circulos.municipio, num: circulos.circulo, orientadores: circulos.orientador})
-            console.log(circulos)
+            await res.json({dpto: circulos[0].departamento, mun: circulos[0].municipio, num: circulos[0].circulo, orientadores: circulos[0].orientador})
+            //console.log(circulos[0].orientador)
             //res.json(circulos.orientador)
         }
     });
