@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         search() {
-            const get = axios().get
+            const get = Api().get
 
             const params = {
                         encargado: this.encargado
@@ -63,9 +63,9 @@ export default {
                 'circulos/orientador',
                 {params}
                 
-            ).then(response => {
-                this.orientadores = response.data.orientadores
-                console.log(response)
+            ).then((response) => {
+                this.orientadores = response.data.orientadores;
+                console.log(response);
             }).catch(error => {
                 console.log(error)
             })
