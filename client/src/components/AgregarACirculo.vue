@@ -37,9 +37,8 @@
             <br>
             <v-form>
                 
-                <v-select class="drop-down-conf" v-model="type" label="Seleccione el tipo de usuario" :items="items" :rules="notEmpty" required></v-select>
-                <v-text-field v-model="circle" label="Ingrese el código del círculo como: Departamento, Municipio, Número" :items="sectores" :rules="notEmpty" required></v-text-field>
-                <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas)" v-model="user" :rules="notEmpty" required></v-textarea>
+                <v-text-field v-model="circle" label="Ingrese el código del círculo como: Departamento,Municipio,Número (sin espacios)" :rules="notEmpty" required></v-text-field>
+                <v-textarea label = "Ingrese el código del usuario a agregar (si es más de uno, separarlo por comas y sin espacio despues de las mismas)" v-model="students" :rules="notEmpty" required></v-textarea>
                 <br>
                 <v-btn depressed round block color="primary" v-on:click="agregar()">Agregar</v-btn>
                  
@@ -53,15 +52,19 @@
 <script>
 import router from '../router'
 
+import Api from '@/services/Api'
+
+
     export default {
-        name: 'UserType',
+        name: 'AgregarACirculo',
         data () {
             return {
                 msg: 'Agregar a círculo',
-                items:['Estudiante','Orientador'],
                 notEmpty: [
                   v => !!v || 'Requerido'
                 ],
+                circle: '',
+                students: ''
             }
         },
         methods: {
@@ -75,8 +78,32 @@ import router from '../router'
                 router.push({name: 'LogIn'})
             },
             agregar() {
+                var estudiantes = this.students.split(',')
+                console.log(estudiantes)
+                for(var estud=0;estud<estudiantes.length;estud++){
+                    const params = {
+                        departamento: this.circle.split(',')[0],
+                        municipio: this.circle.split(',')[1],
+                        circulo: this.circle.split(',')[2],
+                        nombre: estudiantes[estud]
+                    }
+                    const post = Api().post
 
-                router.push({ name: "AdminHome" });
+                    post(
+                        'estudiantes/add',
+                        params
+                        
+                    ).then((response) => {
+                        
+                    }).catch(error => {
+                        console.log(error)
+                    })
+
+                    
+                }
+                
+    
+                //router.push({ name: "AdminHome" });
             },
             cancelar() {
 

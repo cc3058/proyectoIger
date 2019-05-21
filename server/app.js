@@ -88,6 +88,7 @@ app.use('/api/posts', require('./routes/api-posts'))
 app.use('/auth', 	  require('./routes/auth'))
 app.use('/', 		  require('./routes/pages'))
 app.use('/circulos',   require('./routes/circle-route'))
+app.use('/estudiantes',   require('./routes/students'))
 // -----------------------------------------------------
 
 app.listen(port, function() {

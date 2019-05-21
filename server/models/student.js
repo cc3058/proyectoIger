@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Defining collection and schema for a circle-post
-let Post = new Schema({
+let StudentSchema = new Schema({
     departamento:{
         type: String
     },
@@ -12,20 +12,11 @@ let Post = new Schema({
     circulo:{
         type: String
     },
-    direccion:{
-      type: String
-    },
-    coordinador:{
+    nombre:{
         type: String
     },
-    encargado:{
-        type: String
-    },
-    orientador:{
-        type: Array
-    }
     },{
-        collection: 'circulos'
+        collection: 'estudiantes'
 });
 
-module.exports = mongoose.model('Post', Post)
+module.exports = mongoose.model('Student', StudentSchema)

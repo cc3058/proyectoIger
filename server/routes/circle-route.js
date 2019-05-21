@@ -70,4 +70,6 @@ postRoutes.route('/coordinador').get(async function (req, res) {
 
 
 
+
+
 module.exports = postRoutes;
