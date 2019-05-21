@@ -37,8 +37,15 @@ postRoutes.route('/orientador').get(async function (req, res) {
         if(err){
             await res.json(err);
         } else {
-            await res.json({dpto: circulos[0].departamento, mun: circulos[0].municipio, num: circulos[0].circulo, orientadores: circulos[0].orientador})
-            //console.log(circulos[0].orientador)
+            var allresults = []
+            for(row in circulos)
+            {
+                var fetchoneresult = await {dpto: circulos[row].departamento, mun: circulos[row].municipio, num: circulos[row].circulo, orientadores: circulos[row].orientador}
+                allresults.push(fetchoneresult)
+            }
+            res.json(allresults)
+
+            console.log(allresults)
             //res.json(circulos.orientador)
         }
     });
