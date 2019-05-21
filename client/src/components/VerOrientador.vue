@@ -58,7 +58,7 @@ export default {
                 'circulos/orientador',
                 {
                     params: {
-                        orientador: this.orientador
+                        encargado: this.encargado
                     }
                 }
             ).then(result => {
