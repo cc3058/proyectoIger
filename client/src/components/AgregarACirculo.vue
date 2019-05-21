@@ -103,7 +103,7 @@ import Api from '@/services/Api'
                 }
                 
     
-                //router.push({ name: "AdminHome" });
+                router.push({ name: "AdminHome" });
             },
             cancelar() {
 
