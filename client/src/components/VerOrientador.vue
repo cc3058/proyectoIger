@@ -31,7 +31,7 @@
         </v-toolbar>
         <v-form>
             <b-container fluid>
-                <v-text-field label = "Ingresar orientador" v-model="encargado" required></v-text-field>
+                <v-text-field label = "Ingresar encargado" v-model="encargado" required></v-text-field>
                 <v-btn round block color='primary' depressed dark class="font-weight-bold" v-on:click="search()">Ver orientadores</v-btn>
             </b-container>
         </v-form>
@@ -42,6 +42,7 @@
 </template>
 <script>
 import Api from '@/services/Api'
+import axios from 'axios'
 export default {
     name: 'VerOrientador',
     data() {
@@ -52,17 +53,19 @@ export default {
     },
     methods: {
         search() {
-            const get = Api().get
+            const get = axios().get
+
+            const params = {
+                        encargado: this.encargado
+                    }
 
             get(
                 'circulos/orientador',
-                {
-                    params: {
-                        encargado: this.encargado
-                    }
-                }
-            ).then(result => {
-                this.orientadores = result.data.orientadores
+                {params}
+                
+            ).then(response => {
+                this.orientadores = response.data.orientadores
+                console.log(response)
             }).catch(error => {
                 console.log(error)
             })

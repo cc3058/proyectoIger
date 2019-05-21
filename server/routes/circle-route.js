@@ -33,10 +33,13 @@ postRoutes.route('/orientador').get(function (req, res) {
     Post.find({
         encargado: req.query.encargado
     }, function(err, circulos){
+        console.log("entre2")
         if(err){
             res.json(err);
         } else {
-            res.json({dpto: circulos.departamento, mun: circulos.municipio, num: circulos.num, orientadores: circulos.orientador})
+            res.json({dpto: circulos.departamento, mun: circulos.municipio, num: circulos.circulo, orientadores: circulos.orientador})
+            console.log(circulos)
+            //res.json(circulos.orientador)
         }
     });
 });
