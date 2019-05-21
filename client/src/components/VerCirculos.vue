@@ -52,6 +52,10 @@ export default {
         }
     },
     methods: {
+        
+        registro(){
+            router.push({name: 'Register'})
+        },
         search() {
             const get = Api().get
 

@@ -108,6 +108,9 @@ import Api from '@/services/Api'
             cancelar() {
 
                 router.push({ name: "AdminHome" });
+            },
+            registro(){
+            router.push({name: 'Register'})
             }
           }
     }
